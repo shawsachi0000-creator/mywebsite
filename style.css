@@ -148,3 +148,30 @@ nav a:hover{
 background:#2563eb;
 color:white;
 }
+.tool-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.tool-card{
+background:#fff;
+padding:20px;
+border-radius:12px;
+text-align:center;
+text-decoration:none;
+color:#222;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.tool-card:hover{
+transform:translateY(-6px);
+background:#2563eb;
+color:#fff;
+}
+
+.tool-card h3{
+margin:10px 0;
+}
