@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Converter - AI Tools Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>📏 Unit Converter</h1>
+<p>Convert Kilometers to Miles</p>
+</header>
+
+<div class="container">
+<div class="card">
+
+<input type="number" id="km" placeholder="Enter Kilometers">
+
+<br><br>
+
+<button onclick="convert()">Convert</button>
+
+<h2 id="result"></h2>
+
+</div>
+</div>
+
+<script>
+function convert(){
+
+let km=parseFloat(document.getElementById("km").value);
+
+if(isNaN(km)){
+alert("Enter a valid number");
+return;
+}
+
+let miles=(km*0.621371).toFixed(2);
+
+document.getElementById("result").innerHTML=
+km+" km = "+miles+" miles";
+
+}
+</script>
+
+</body>
+</html>
