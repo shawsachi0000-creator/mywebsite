@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorem Ipsum Generator - AI Tools Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>📝 Lorem Ipsum Generator</h1>
+<p>Generate dummy text instantly.</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<label>Paragraphs</label>
+
+<input type="number" id="count" value="3" min="1" max="20">
+
+<br><br>
+
+<button onclick="generate()">Generate</button>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const lorem="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+function generate(){
+
+let count=parseInt(document.getElementById("count").value);
+
+let html="";
+
+for(let i=0;i<count;i++){
+
+html+="<p>"+lorem+"</p>";
+
+}
+
+document.getElementById("result").innerHTML=html;
+
+}
+
+generate();
+
+</script>
+
+</body>
+</html>
