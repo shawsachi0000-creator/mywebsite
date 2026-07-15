@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Picker - AI Tools Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>🎨 Color Picker</h1>
+<p>Select any color and copy its HEX code.</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<input type="color" id="color" value="#2563eb">
+
+<h2 id="hex">#2563eb</h2>
+
+<button onclick="copyColor()">Copy HEX</button>
+
+</div>
+
+</div>
+
+<script>
+
+const picker=document.getElementById("color");
+const hex=document.getElementById("hex");
+
+picker.addEventListener("input",function(){
+hex.innerHTML=picker.value;
+});
+
+function copyColor(){
+navigator.clipboard.writeText(picker.value);
+alert("HEX Code Copied!");
+}
+
+</script>
+
+</body>
+</html>
