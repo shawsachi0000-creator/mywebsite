@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Number Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>🎲 Random Number Generator</h1>
+<p>Generate random numbers instantly.</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<input type="number" id="min" placeholder="Minimum Number">
+
+<input type="number" id="max" placeholder="Maximum Number">
+
+<button onclick="generate()">Generate</button>
+
+<h2 id="result">0</h2>
+
+</div>
+
+</div>
+
+<script>
+
+function generate(){
+
+let min=parseInt(document.getElementById("min").value);
+
+let max=parseInt(document.getElementById("max").value);
+
+if(isNaN(min)||isNaN(max)||min>max){
+alert("Enter valid numbers");
+return;
+}
+
+let num=Math.floor(Math.random()*(max-min+1))+min;
+
+document.getElementById("result").innerHTML=num;
+
+}
+
+</script>
+
+</body>
+</html>
