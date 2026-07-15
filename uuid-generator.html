@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UUID Generator - AI Tools Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>🆔 UUID Generator</h1>
+<p>Generate a random UUID (Version 4).</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<button onclick="generateUUID()">Generate UUID</button>
+
+<h2 id="uuid"></h2>
+
+<button onclick="copyUUID()">Copy UUID</button>
+
+</div>
+
+</div>
+
+<script>
+
+function generateUUID(){
+
+let id=crypto.randomUUID();
+
+document.getElementById("uuid").innerHTML=id;
+
+}
+
+function copyUUID(){
+
+let text=document.getElementById("uuid").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("UUID Copied!");
+
+}
+
+generateUUID();
+
+</script>
+
+</body>
+</html>
