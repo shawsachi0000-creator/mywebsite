@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 Encoder / Decoder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>🔐 Base64 Encoder / Decoder</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<textarea id="text" rows="8" style="width:100%;padding:10px;"></textarea>
+
+<br><br>
+
+<button onclick="encodeText()">Encode</button>
+<button onclick="decodeText()">Decode</button>
+
+<pre id="result"></pre>
+
+</div>
+
+</div>
+
+<script>
+
+function encodeText(){
+let text=document.getElementById("text").value;
+document.getElementById("result").textContent=btoa(text);
+}
+
+function decodeText(){
+try{
+let text=document.getElementById("text").value;
+document.getElementById("result").textContent=atob(text);
+}catch{
+document.getElementById("result").textContent="Invalid Base64";
+}
+}
+
+</script>
+
+</body>
+</html>
