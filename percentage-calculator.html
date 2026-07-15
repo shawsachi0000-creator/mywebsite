@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator - AI Tools Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>🧮 Percentage Calculator</h1>
+<p>Calculate percentages instantly.</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<input type="number" id="value" placeholder="Value">
+
+<input type="number" id="percent" placeholder="Percentage">
+
+<button onclick="calculate()">Calculate</button>
+
+<h2 id="result">Result: 0</h2>
+
+</div>
+
+</div>
+
+<script>
+function calculate(){
+let value=parseFloat(document.getElementById("value").value);
+let percent=parseFloat(document.getElementById("percent").value);
+
+if(isNaN(value)||isNaN(percent)){
+alert("Please enter valid numbers.");
+return;
+}
+
+let answer=(value*percent)/100;
+
+document.getElementById("result").innerHTML="Result: "+answer;
+}
+</script>
+
+</body>
+</html>
