@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Encoder / Decoder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>🌐 URL Encoder / Decoder</h1>
+<p>Encode and Decode URLs instantly.</p>
+</header>
+
+<div class="container">
+<div class="card">
+
+<textarea id="text" rows="8" style="width:100%;padding:10px;"></textarea>
+
+<br><br>
+
+<button onclick="encodeURL()">Encode</button>
+<button onclick="decodeURL()">Decode</button>
+
+<pre id="result"></pre>
+
+</div>
+</div>
+
+<script>
+function encodeURL(){
+let text=document.getElementById("text").value;
+document.getElementById("result").textContent=encodeURIComponent(text);
+}
+
+function decodeURL(){
+try{
+let text=document.getElementById("text").value;
+document.getElementById("result").textContent=decodeURIComponent(text);
+}catch{
+document.getElementById("result").textContent="Invalid URL";
+}
+}
+</script>
+
+</body>
+</html>
