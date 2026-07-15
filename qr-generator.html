@@ -1,46 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QR Code Generator</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <style>
 body{
 font-family:Arial,sans-serif;
-background:#f4f7fb;
-padding:20px;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
 }
 
-.container{
-max-width:600px;
-margin:auto;
+.box{
 background:#fff;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,.1);
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+width:90%;
+max-width:420px;
+text-align:center;
+}
+
+h1{
+color:#2563eb;
 }
 
 input{
 width:100%;
 padding:12px;
-margin-bottom:15px;
+font-size:16px;
+margin:15px 0;
+border:1px solid #ccc;
+border-radius:8px;
 }
 
 button{
-padding:12px 20px;
 background:#2563eb;
-color:#fff;
+color:white;
+padding:12px 20px;
 border:none;
+border-radius:8px;
 cursor:pointer;
-border-radius:5px;
+font-size:16px;
 }
 
-#qrcode{
+button:hover{
+background:#1d4ed8;
+}
+
+img{
 margin-top:20px;
-text-align:center;
+max-width:250px;
 }
 </style>
 
@@ -48,30 +63,31 @@ text-align:center;
 
 <body>
 
-<div class="container">
+<div class="box">
 
-<h1>QR Code Generator</h1>
+<h1>📱 QR Code Generator</h1>
 
 <input type="text" id="text" placeholder="Enter text or URL">
 
-<button onclick="generateQR()">Generate QR</button>
+<button onclick="generateQR()">Generate QR Code</button>
 
-<div id="qrcode"></div>
+<br><br>
+
+<img id="qr">
 
 </div>
 
 <script>
+
 function generateQR(){
 
-document.getElementById("qrcode").innerHTML="";
+let text=document.getElementById("text").value;
 
-new QRCode(document.getElementById("qrcode"),{
-text:document.getElementById("text").value,
-width:200,
-height:200
-});
+document.getElementById("qr").src=
+"https://api.qrserver.com/v1/create-qr-code/?size=250x250&data="+encodeURIComponent(text);
 
 }
+
 </script>
 
 </body>
