@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article with 200+ Automatic Banners</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        /* Banner Container Styling */
+        .banner-ad-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .banner-ad-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+        .banner-ad-container img:hover {
+            transform: scale(1.01);
+        }
+        h1 {
+            color: #222;
+            font-size: 26px;
+        }
+        .meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Banner Ad Section (Isme JS se automatic image aayegi) -->
+        <div class="banner-ad-container">
+            <a id="ad-link" href="https://google.com" target="_blank">
+                <img id="ad-banner" src="" alt="Dynamic Advertisement">
+            </a>
+        </div>
+
+        <!-- Article Section -->
+        <article>
+            <h1>Dynamic 200+ Image Banner System</h1>
+            <div class="meta">Published on: July 16, 2026</div>
+            <hr style="border:0; border-top: 1px solid #eee; margin-bottom:20px;">
+            
+            <p>Is file ka naam aap <strong>200-images-banner.html</strong> rakh sakte hain. Isko chalane ke liye aapko koi bhi image file apne server ya hosting par upload karne ki jarurat nahi hai.</p>
+            
+            <p>Neeche likha gaya JavaScript code automatic 1 se lekar 200 tak ki unique images generate karta hai. Jab bhi koi user is page ko refresh karega, usko har baar ek nayi aur alag image dikhayi degi.</p>
+        </article>
+
+    </div>
+
+    <!-- JavaScript code jo 200+ images ko handle karega -->
+    <script>
+        // 1. Ek array banayenge jisme 200 se zyada unique images automatic add ho jayengi
+        const totalImages = 220; // Aap isko 200 se jitna chahein badha sakte hain
+        const imageList = [];
+
+        for (let i = 1; i <= totalImages; i++) {
+            // Picsum Photos standard sizes (728x90) mein unique ID ke sath random image deta hai
+            imageList.push(`https://picsum.photos{i}`);
+        }
+
+        // 2. Har bar page load hone par ek random number select hoga (0 se lekar totalImages tak)
+        const randomIndex = Math.floor(Math.random() * imageList.length);
+
+        // 3. HTML ke img tag mein woh random image automatic load ho jayegi
+        document.getElementById('ad-banner').src = imageList[randomIndex];
+    </script>
+
+</body>
+</html>
+
