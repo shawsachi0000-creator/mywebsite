@@ -1,28 +1,22 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "fs";
 
-const title = "What is Artificial Intelligence?";
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-const html = `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>${title}</title>
-</head>
-<body>
+async function main() {
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-<h1>${title}</h1>
-
-<p>
-Artificial Intelligence (AI) is a technology that enables computers
-to perform tasks that normally require human intelligence such as
-learning, problem-solving and decision making.
-</p>
-
-</body>
-</html>
+  const prompt = `
+Write a complete SEO-friendly HTML article about Artificial Intelligence.
+Return only HTML.
 `;
 
-fs.writeFileSync("what-is-artificial-intelligence.html", html);
+  const result = await model.generateContent(prompt);
+  const html = result.response.text();
 
-console.log("Article Generated Successfully");
+  fs.writeFileSync("article.html", html);
+
+  console.log("Article Generated Successfully");
+}
+
+main();
