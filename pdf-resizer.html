@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Resizer - AI Tools Hub</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+margin:0;
+padding:30px;
+text-align:center;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:#fff;
+padding:25px;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+h1{
+color:#2563eb;
+}
+
+input,button{
+width:100%;
+padding:12px;
+margin-top:15px;
+border-radius:8px;
+}
+
+button{
+background:#2563eb;
+color:#fff;
+border:none;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>PDF Resizer Tool</h1>
+
+<input type="file" id="pdfFile" accept=".pdf">
+
+<label>Scale (%)</label>
+
+<input type="number" id="scale" value="80">
+
+<button onclick="resizePDF()">Resize PDF</button>
+
+</div>
+
+<script>
+
+async function resizePDF(){
+
+const file=document.getElementById("pdfFile").files[0];
+
+if(!file){
+alert("Select PDF");
+return;
+}
+
+const scale=document.getElementById("scale").value/100;
+
+const bytes=await file.arrayBuffer();
+
+const pdf=await PDFLib.PDFDocument.load(bytes);
+
+const pages=pdf.getPages();
+
+pages.forEach(page=>{
+
+const {width,height}=page.getSize();
+
+page.setSize(width*scale,height*scale);
+
+});
+
+const pdfBytes=await pdf.save();
+
+const blob=new Blob([pdfBytes],{type:"application/pdf"});
+
+const url=URL.createObjectURL(blob);
+
+const a=document.createElement("a");
+
+a.href=url;
+
+a.download="resized.pdf";
+
+a.click();
+
+}
+
+</script>
+
+</body>
+</html>
