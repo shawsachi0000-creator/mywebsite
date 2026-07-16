@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>PDF Compressor - AI Tools Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#f4f7fb;
+
+}
+
+header{
+
+background:#2563eb;
+padding:20px;
+color:#fff;
+text-align:center;
+
+}
+
+.container{
+
+max-width:900px;
+margin:40px auto;
+padding:20px;
+
+}
+
+.upload-box{
+
+background:#fff;
+border:3px dashed #2563eb;
+padding:60px 20px;
+border-radius:15px;
+text-align:center;
+cursor:pointer;
+
+}
+
+.upload-box:hover{
+
+background:#eef5ff;
+
+}
+
+.upload-box h2{
+
+margin-bottom:15px;
+
+}
+
+input[type=file]{
+
+display:none;
+
+}
+
+button{
+
+margin-top:25px;
+padding:15px 40px;
+background:#2563eb;
+border:none;
+color:#fff;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#1d4ed8;
+
+}
+
+.progress{
+
+margin-top:30px;
+display:none;
+
+}
+
+.progress-bar{
+
+height:18px;
+background:#ddd;
+border-radius:30px;
+overflow:hidden;
+
+}
+
+.progress-fill{
+
+height:100%;
+width:0%;
+background:#22c55e;
+
+}
+
+#status{
+
+margin-top:15px;
+font-size:18px;
+
+}
+
+footer{
+
+margin-top:50px;
+text-align:center;
+padding:30px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Professional PDF Compressor</h1>
+
+<p>Fast • Secure • Free</p>
+
+</header>
+
+<div class="container">
+
+<label class="upload-box">
+
+<h2>Select PDF</h2>
+
+<p>Click here to upload PDF</p>
+
+<input type="file" id="pdf" accept=".pdf">
+
+</label>
+
+<center>
+
+<button onclick="compressPDF()">
+
+Compress PDF
+
+</button>
+
+</center>
+
+<div class="progress" id="progress">
+
+<div class="progress-bar">
+
+<div class="progress-fill" id="fill"></div>
+
+</div>
+
+<p id="status">
+
+Preparing...
+
+</p>
+
+</div>
+
+</div>
+
+<footer>
+
+© AI Tools Hub
+
+</footer>
+
+<script>
+
+function compressPDF(){
+const card = document.createElement("div");
+
+card.style.marginTop = "20px";
+card.style.padding = "20px";
+card.style.background = "#e8f5e9";
+card.style.borderRadius = "12px";
+
+card.innerHTML = `
+<h3>✅ Compression Complete</h3>
+
+<p>Your PDF is ready.</p>
+
+<a href="${url}" download="compressed.pdf"
+style="
+display:inline-block;
+margin-top:15px;
+background:#16a34a;
+padding:12px 25px;
+color:white;
+text-decoration:none;
+border-radius:8px;
+">
+Download PDF
+</a>
+`;
+
+document.querySelector(".container").appendChild(card);
+document.getElementById("fileInfo").style.display = "block";
+
+document.getElementById("pdfName").innerHTML = file.name;
+
+document.getElementById("pdfSize").innerHTML =
+(file.size / 1024 / 1024).toFixed(2) + " MB";
+
+const quality = document.getElementById("quality").value;
+
+console.log("Compression Level:", quality);
+
+document.getElementById("progress").style.display="block";
+
+let i=0;
+
+let x=setInterval(function(){
+
+i++;
+
+document.getElementById("fill").style.width=i+"%";
+
+document.getElementById("status").innerHTML="Compressing "+i+"%";
+
+if(i>=100){
+
+clearInterval(x);
+
+document.getElementById("status").innerHTML="Ready (Compression engine will be added in Part 2)";
+
+}
+
+},40);
+
+}
+
+</script>
+
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+<script>
+async function compressPDF() {
+
+const file = document.getElementById("pdf").files[0];
+
+if (!file) {
+    alert("Please select a PDF.");
+    return;
+}
+
+document.getElementById("progress").style.display = "block";
+
+const fill = document.getElementById("fill");
+const status = document.getElementById("status");
+
+status.innerHTML = "Reading PDF...";
+
+const bytes = await file.arrayBuffer();
+
+fill.style.width = "20%";
+
+const pdfDoc = await PDFLib.PDFDocument.load(bytes);
+
+fill.style.width = "50%";
+status.innerHTML = "Optimizing PDF...";
+
+// Basic optimization
+const pdfBytes = await pdfDoc.save({
+    useObjectStreams: true
+});
+
+fill.style.width = "90%";
+status.innerHTML = "Preparing download...";
+
+const blob = new Blob([pdfBytes], {
+    type: "application/pdf"
+});
+
+const url = URL.createObjectURL(blob);
+
+const a = document.createElement("a");
+a.href = url;
+a.download = "compressed.pdf";
+a.click();
+
+fill.style.width = "100%";
+status.innerHTML = "✅ PDF Ready";
+}
+</script>
+<label style="display:block;margin-top:20px;font-weight:600;">
+Compression Level
+</label>
+
+<select id="quality" style="width:100%;padding:12px;border-radius:10px;margin-top:10px;">
+<option value="0.9">Low Compression (Best Quality)</option>
+<option value="0.7" selected>Medium Compression</option>
+<option value="0.5">High Compression</option>
+</select>
+
+<div id="fileInfo" style="display:none;margin-top:20px;padding:15px;background:#f8f9fa;border-radius:10px;">
+<h3>PDF Information</h3>
+<p><strong>Name:</strong> <span id="pdfName"></span></p>
+<p><strong>Size:</strong> <span id="pdfSize"></span></p>
+</div>
+
