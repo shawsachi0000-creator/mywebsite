@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Tools Desktop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+min-height:100vh;
+color:white;
+}
+
+.header{
+text-align:center;
+padding:50px 20px 20px;
+}
+
+.logo{
+font-size:60px;
+}
+
+.header h1{
+font-size:48px;
+margin-top:10px;
+}
+
+.header p{
+opacity:.8;
+margin-top:10px;
+}
+
+.search{
+max-width:700px;
+margin:40px auto;
+padding:0 20px;
+}
+
+.search input{
+
+width:100%;
+padding:18px 25px;
+border:none;
+border-radius:50px;
+font-size:18px;
+outline:none;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+.grid{
+
+max-width:1200px;
+margin:40px auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:25px;
+
+}
+.card{
+
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:25px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.card:hover{
+
+transform:translateY(-8px) scale(1.05);
+background:rgba(255,255,255,.2);
+
+}
+
+.icon{
+
+font-size:55px;
+margin-bottom:15px;
+
+}
+
+.card h2{
+
+font-size:22px;
+margin-bottom:10px;
+
+}
+
+.card p{
+
+font-size:14px;
+opacity:.85;
+
+}
+
+.card a{
+
+display:inline-block;
+margin-top:18px;
+padding:10px 22px;
+background:white;
+color:#2563eb;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+
+}
+
+footer{
+
+margin-top:60px;
+text-align:center;
+padding:30px;
+opacity:.8;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">🤖</div>
+
+<h1>AI Tools Hub</h1>
+
+<p>Google Style Desktop Dashboard</p>
+
+</div>
+
+<div class="search">
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search AI Tools...">
+
+</div>
+
+<div class="grid">
+<div class="card">
+<div class="icon">🤖</div>
+<h2>AI Tools</h2>
+<p>Smart AI tools for writing and chat.</p>
+<a href="ai-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">📄</div>
+<h2>PDF Tools</h2>
+<p>Compress, Merge, Split & Convert.</p>
+<a href="pdf-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">🖼️</div>
+<h2>Image Tools</h2>
+<p>Resize, Compress & Convert Images.</p>
+<a href="image-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">📝</div>
+<h2>Text Tools</h2>
+<p>Word Counter & Text Utilities.</p>
+<a href="text-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">💻</div>
+<h2>Developer</h2>
+<p>JSON, HTML, CSS & JS Tools.</p>
+<a href="developer-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">🔍</div>
+<h2>SEO Tools</h2>
+<p>Meta Tags & Sitemap Generator.</p>
+<a href="seo-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">🧮</div>
+<h2>Calculators</h2>
+<p>BMI, Age, EMI & GST Calculator.</p>
+<a href="calculator-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">🔐</div>
+<h2>Security</h2>
+<p>Password & Hash Generator.</p>
+<a href="security-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">🔄</div>
+<h2>Converters</h2>
+<p>File & Image Converter Tools.</p>
+<a href="converter-tools.html">Open</a>
+</div>
+
+<div class="card">
+<div class="icon">🛠️</div>
+<h2>Utilities</h2>
+<p>QR Code, Barcode & UUID.</p>
+<a href="utility-tools.html">Open</a>
+</div>
+</div>
+
+<footer>
+
+<p>© 2026 AI Tools Hub • Fast • Secure • Free</p>
+
+</footer>
+
+<script>
+
+const search=document.getElementById("searchBox");
+
+search.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
